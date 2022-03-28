@@ -7,11 +7,11 @@ public class Movement : MonoBehaviour
     public bool doubleScreen = false;
     private int width;
     private int height;
-    Rigidbody rigidbody;
+    Rigidbody rb;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
     void Update()
     {
@@ -31,26 +31,27 @@ public class Movement : MonoBehaviour
 
                 if (touch.position.x > Screen.width / 2 && touch.phase == TouchPhase.Began && touch.position.y < Screen.height / 2)
                 {
-                    rigidbody.AddForce(-150, -300.5f, 0);
+                    rb.AddForce(-150, -300.5f, 0);
                 }
                 if (touch.position.x < Screen.width / 2 && touch.phase == TouchPhase.Began && touch.position.y < Screen.height / 2)
                 {
-                    rigidbody.AddForce(150, -300.5f, 0);
+                    rb.AddForce(150, -300.5f, 0);
                 }
             }    
         }
-        transform.forward += -GetComponent<Rigidbody>().velocity.normalized * 0.05f;
+
+        transform.forward += -rb.velocity.normalized * 0.05f;
     }
 
     void upMovement(Touch touch)
     {
         if (touch.position.x > Screen.width / 2 && touch.phase == TouchPhase.Began)
         {
-            rigidbody.AddForce(-300, 200.5f, 0);
+            rb.AddForce(-300, 200.5f, 0);
         }
         if (touch.position.x < Screen.width / 2 && touch.phase == TouchPhase.Began)
         {
-            rigidbody.AddForce(300, 200.5f, 0);
+            rb.AddForce(300, 200.5f, 0);
         }
     }
 }

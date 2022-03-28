@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class WhaleMovement : MonoBehaviour
 {
-    void Update()
+    public GameObject parent;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (Input.touchCount > 0)
-        {
-            Touch touch = Input.GetTouch(0);
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            touchPosition.z = 0.0f;
-            transform.position = touchPosition;
-        }
+
+        parent.SetActive(false);
     }
 }
