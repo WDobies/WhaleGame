@@ -8,6 +8,7 @@ public class Locate : MonoBehaviour
     private Vector3 whaleTransform;
     int pos;
 
+    [SerializeField] ParticleSystem Bubbles = null;
     private void Awake()
     {
         whaleTransform = whale.transform.position + new Vector3(0, -10, 0);
@@ -19,6 +20,9 @@ public class Locate : MonoBehaviour
         transform.LookAt(whaleTransform);
         Vector3 pos = Vector2.MoveTowards(transform.position, whaleTransform , 55 * Time.deltaTime);
         transform.position = pos;
+
+        if (Bubbles.isPlaying == false)
+            Bubbles.Play();
     }
 
 
