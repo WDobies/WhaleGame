@@ -21,6 +21,7 @@ public class Locate : MonoBehaviour
         Vector3 pos = Vector2.MoveTowards(transform.position, whaleTransform , 55 * Time.deltaTime);
         transform.position = Bubbles.transform.position = pos;
 
+        // Particles
         if (Bubbles.isPlaying == false)
             Bubbles.Play();
     }
