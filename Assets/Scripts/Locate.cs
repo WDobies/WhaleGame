@@ -19,7 +19,7 @@ public class Locate : MonoBehaviour
     {
         transform.LookAt(whaleTransform);
         Vector3 pos = Vector2.MoveTowards(transform.position, whaleTransform , 55 * Time.deltaTime);
-        transform.position = pos;
+        transform.position = Bubbles.transform.position = pos;
 
         if (Bubbles.isPlaying == false)
             Bubbles.Play();
