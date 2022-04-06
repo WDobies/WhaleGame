@@ -198,7 +198,7 @@ GameObject:
   - component: {fileID: 7595802015127999860}
   - component: {fileID: 4798869898931820223}
   m_Layer: 0
-  m_Name: Whale_LowPoly
+  m_Name: Whale
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

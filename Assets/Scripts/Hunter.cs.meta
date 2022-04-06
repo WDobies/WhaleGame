@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 560f647cbbe43514692769f44880c160
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - harpoon: {fileID: 3148649047832350724, guid: a92660c900b654b41853e0a7d9022be7, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

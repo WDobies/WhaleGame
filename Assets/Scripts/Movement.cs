@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public bool doubleScreen = false;
+    public int timesHit = 0;
     private int width;
     private int height;
     Rigidbody rb;
@@ -15,7 +16,7 @@ public class Movement : MonoBehaviour
     }
     void Update()
     {
-        Physics.gravity = new Vector3(0, -4.5f, 0);
+        Physics.gravity = new Vector3(0, -4.5f-(timesHit*4), 0);
         
         if (Input.touchCount > 0)
         {
@@ -41,6 +42,7 @@ public class Movement : MonoBehaviour
         }
 
         transform.forward += -rb.velocity.normalized * 0.05f;
+
     }
 
     void upMovement(Touch touch)
@@ -54,4 +56,5 @@ public class Movement : MonoBehaviour
             rb.AddForce(300, 200.5f, 0);
         }
     }
+
 }
