@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 8889052713583659433}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.21135344, y: 23.815258, z: 7.372098}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 2, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -109,4 +109,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   harpoon: {fileID: 3148649047832350724, guid: a92660c900b654b41853e0a7d9022be7, type: 3}
-  Bubbles: {fileID: 4868927955960059026, guid: d5548029793e0944f933632e70adf630, type: 3}
