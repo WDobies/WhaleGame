@@ -19,7 +19,6 @@ public class Hunter : MonoBehaviour
 
     void SpawnHarpoon()
     {
-        
         Instantiate(harpoon, transform.position, Quaternion.identity);
     }
 }

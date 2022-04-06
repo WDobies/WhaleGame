@@ -9,6 +9,10 @@ public class Harpoon : MonoBehaviour
     float spawnRange = 24.0f;
     Vector3 targetPosition;
     bool stop = false;
+    
+    [SerializeField] ParticleSystem Bubbles = null;
+    ParticleSystem instantiatedBubbles;
+    bool bubbleSpawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,18 @@ public class Harpoon : MonoBehaviour
 
             Vector3 pos = Vector2.MoveTowards(transform.position, targetPosition, 55 * Time.deltaTime);
             transform.position = pos;
+
+            // Particles
+            if (bubbleSpawned == false)
+            {
+                SpawnBubbles();
+                if (instantiatedBubbles.isPlaying == false)
+                    instantiatedBubbles.Play();
+
+                bubbleSpawned = true;
+            }
+            else
+                instantiatedBubbles.transform.position = transform.position;
         }
 
     }
@@ -36,6 +52,10 @@ public class Harpoon : MonoBehaviour
         {
             Destroy(gameObject, 5);
             stop = true;
+
+            // Particles
+            if (instantiatedBubbles.isEmitting == true)
+                instantiatedBubbles.Stop();
         }
         if (other.gameObject.name == "Whale" && !stop)
         {
@@ -46,7 +66,15 @@ public class Harpoon : MonoBehaviour
             //Physics.IgnoreCollision(other, this.transform.parent.GetComponent<BoxCollider>());
             this.transform.GetComponent<Rigidbody>().detectCollisions = false;
             stop = true;
+
+            // Particles
+            if (instantiatedBubbles.isEmitting == true)
+                instantiatedBubbles.Stop();
         }
     }
 
+    void SpawnBubbles()
+    {
+        instantiatedBubbles =  Instantiate(Bubbles, transform.position, Quaternion.identity);
+    }
 }
