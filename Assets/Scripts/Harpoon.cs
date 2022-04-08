@@ -77,6 +77,17 @@ public class Harpoon : MonoBehaviour
             whale = other.gameObject.GetComponent<Movement>();
             whale.timesHit++;
 
+            PlayerStats stats = other.gameObject.GetComponent<PlayerStats>();
+            if(stats.health > 20)
+            {
+                stats.health -= other.gameObject.GetComponent<PlayerStats>().damagePerHarpoon;
+            }
+            else
+            {
+                stats.health -= other.gameObject.GetComponent<PlayerStats>().damagePerHarpoon;
+                Debug.Log("Whale died.");
+            }
+
             this.transform.parent = other.transform;
             //Physics.IgnoreCollision(other, this.transform.parent.GetComponent<BoxCollider>());
             this.transform.GetComponent<Rigidbody>().detectCollisions = false;

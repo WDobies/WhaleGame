@@ -20,10 +20,13 @@ public class Movement : MonoBehaviour
         
         if (Input.touchCount > 0)
         {
+            PlayerStats stats = GetComponent<PlayerStats>();
+
             Touch touch = Input.GetTouch(0);
 
             if (doubleScreen)
             {
+                stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
                 upMovement(touch);
             }
             else
@@ -32,10 +35,12 @@ public class Movement : MonoBehaviour
 
                 if (touch.position.x > Screen.width / 2 && touch.phase == TouchPhase.Began && touch.position.y < Screen.height / 2)
                 {
+                    stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
                     rb.AddForce(-150, -300.5f, 0);
                 }
                 if (touch.position.x < Screen.width / 2 && touch.phase == TouchPhase.Began && touch.position.y < Screen.height / 2)
                 {
+                    stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
                     rb.AddForce(150, -300.5f, 0);
                 }
             }    
@@ -47,12 +52,15 @@ public class Movement : MonoBehaviour
 
     void upMovement(Touch touch)
     {
+        PlayerStats stats = GetComponent<PlayerStats>();
         if (touch.position.x > Screen.width / 2 && touch.phase == TouchPhase.Began)
         {
+            stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
             rb.AddForce(-300, 200.5f, 0);
         }
         if (touch.position.x < Screen.width / 2 && touch.phase == TouchPhase.Began)
         {
+            stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
             rb.AddForce(300, 200.5f, 0);
         }
     }
