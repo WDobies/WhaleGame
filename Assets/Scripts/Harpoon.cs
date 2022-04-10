@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Harpoon : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class Harpoon : MonoBehaviour
         //raySpawn.y = raySpawn.y - 5;
         spawnedWarning = Instantiate(warning, raySpawn, transform.rotation);
         Invoke("StartUpdating", 2);
+
+        //currentHealth = stats.health;
+
+        //healthBar.GetComponent<StatSlider>().SetMaxValue(stats)
+        //healthBar.SetMaxValue(stats.health);
     }
 
     // Update is called once per frame
@@ -96,6 +102,8 @@ public class Harpoon : MonoBehaviour
             // Particles
             if (instantiatedBubbles.isEmitting == true)
                 instantiatedBubbles.Stop();
+
+            //healthBar.SetSliderValue(stats.health);
         }
     }
 

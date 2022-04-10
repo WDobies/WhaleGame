@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e0db38e3e8d454b9a44a8a841c0cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  stats: {fileID: 0}
+  currentHealth: 0
   warning: {fileID: 6449024889665053373, guid: b95bb40d59c0cb44fbf7bf1437ebed43, type: 3}
   Bubbles: {fileID: 4868927955960059026, guid: d5548029793e0944f933632e70adf630, type: 3}
 --- !u!65 &1076217033816443510
