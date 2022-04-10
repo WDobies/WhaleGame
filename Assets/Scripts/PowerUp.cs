@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
+    [SerializeField] bool isHealthy = true;
+    [SerializeField] float timeToStay = 3;
+    private float time;
+
+    private void Update()
+    {
+        time += Time.deltaTime;
+        if (time > timeToStay)
+        {
+            Debug.Log("Eatable destroyed!");
+            Destroy(gameObject);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -14,10 +27,17 @@ public class PowerUp : MonoBehaviour
 
     void PickUp(Collider player)
     {
-        player.transform.localScale *= 1.02f;
         PlayerStats stats = player.GetComponent<PlayerStats>();
-
-        stats.energy += player.GetComponent<PlayerStats>().energyGainedFromFood;
+        if(isHealthy)
+        {
+            player.transform.localScale *= 1.02f;
+            stats.energy += player.GetComponent<PlayerStats>().energyGainedFromFood;
+        }
+        else
+        {
+            player.transform.localScale /= 1.02f;
+            stats.energy -= player.GetComponent<PlayerStats>().energyGainedFromFood;
+        }
 
         Destroy(gameObject);
     }
