@@ -6,62 +6,76 @@ public class Movement : MonoBehaviour
 {
     public bool doubleScreen = false;
     public int timesHit = 0;
+    public float gravity;
+
     private int width;
     private int height;
-    Rigidbody rb;
+    [SerializeField] private float sideForce; //300
+    [SerializeField] private float upDownForce; //400
+    private Rigidbody rb;
+    private bool isColiding = false;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = Vector3.zero; //helps avoid moving on Z axis
+        width = Screen.width / 2;
+        height = Screen.height / 2;
     }
     void Update()
     {
-        Physics.gravity = new Vector3(0, -4.5f-(timesHit*4), 0);
-        
+        //Physics.gravity = new Vector3(0, -4.5f-(timesHit*4), 0);
+        Physics.gravity = new Vector3(0, gravity, 0);
+
         if (Input.touchCount > 0)
         {
-            PlayerStats stats = GetComponent<PlayerStats>();
-
             Touch touch = Input.GetTouch(0);
 
             if (doubleScreen)
             {
-                stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
                 upMovement(touch);
             }
             else
             {
                 upMovement(touch);
 
-                if (touch.position.x > Screen.width / 2 && touch.phase == TouchPhase.Began && touch.position.y < Screen.height / 2)
+                if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y < height)
                 {
-                    stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
-                    rb.AddForce(-150, -300.5f, 0);
+                    rb.AddForce(-sideForce, -upDownForce, 0);
                 }
-                if (touch.position.x < Screen.width / 2 && touch.phase == TouchPhase.Began && touch.position.y < Screen.height / 2)
+                if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y < height)
                 {
-                    stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
-                    rb.AddForce(150, -300.5f, 0);
+                    rb.AddForce(sideForce, -upDownForce, 0);
                 }
             }    
         }
 
-        transform.forward += -rb.velocity.normalized * 0.05f;
+        
+        if(!isColiding)
+            transform.forward += -rb.velocity.normalized * 0.05f;
+        //transform.forward += new Vector3(0, Time.deltaTime * 10);
 
     }
 
-    void upMovement(Touch touch)
+    private void OnCollisionEnter(Collision collision)
     {
-        PlayerStats stats = GetComponent<PlayerStats>();
-        if (touch.position.x > Screen.width / 2 && touch.phase == TouchPhase.Began)
+        if (collision.gameObject.CompareTag("Ground"))
+            isColiding = true;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        isColiding = false;
+    }
+
+    private void upMovement(Touch touch)
+    {
+        if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y > height)
         {
-            stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
-            rb.AddForce(-300, 200.5f, 0);
+            rb.AddForce(-sideForce, upDownForce, 0);
         }
-        if (touch.position.x < Screen.width / 2 && touch.phase == TouchPhase.Began)
+        if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y > height)
         {
-            stats.energy -= GetComponent<PlayerStats>().energyLostPerTouch;
-            rb.AddForce(300, 200.5f, 0);
+            rb.AddForce(sideForce, upDownForce, 0);
         }
     }
 

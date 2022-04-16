@@ -24,7 +24,7 @@ public class EatableSpawner : MonoBehaviour
         if(time % 0.5 >= 0)
         {
             isHealthy = !isHealthy;
-            Debug.Log(isHealthy);
+            //Debug.Log(isHealthy);
         }
 
     }
@@ -44,7 +44,7 @@ public class EatableSpawner : MonoBehaviour
 
         spawnEatable.transform.position = spawnPosition;
 
-        Debug.Log("Food spawned!");
+        //Debug.Log("Food spawned!");
     }
 
 }
