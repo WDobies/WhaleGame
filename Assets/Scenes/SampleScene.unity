@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.4287664, g: 0.66694146, b: 0.70585364, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1431,6 +1431,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 568498576874944526, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
   m_PrefabInstance: {fileID: 1352433611}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1076689803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076689805}
+  - component: {fileID: 1076689804}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1076689804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076689803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aec702a45bdb0cd409a858bb553f9a00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  state: 0
+  hunterSpawner: {fileID: 1292845219}
+  whale: {fileID: 0}
+  difficultyMultiplierBase: 1
+  timer: 0
+  maxHunterNumber: 3
+  hunterSpawnFrequency: 15
+  firstHunterSpawn: 3
+  throwingFrequency: 7
+  harpoonSpeed: 50
+  difficultyMultiplierModifier: 0.00001
+  difficultyThreshold: 10
+--- !u!4 &1076689805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076689803}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.054886, y: 16.799362, z: 32.942852}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1126550477
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,7 +1729,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1292845218}
-  - component: {fileID: 1292845217}
   - component: {fileID: 1292845219}
   m_Layer: 0
   m_Name: Spawner
@@ -1683,29 +1737,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1292845217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1292845216}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35828a4307e10d44ca25040a5a20b136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  harpoons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  whale: {fileID: 1058527550}
 --- !u!4 &1292845218
 Transform:
   m_ObjectHideFlags: 0
@@ -1733,6 +1764,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hunter: {fileID: 8889052713583659433, guid: 4db29324ae97cfe4e989706801745366, type: 3}
+  difficultyMultiplier: 0
+  maxHunterNumber: 3
+  hunterSpawnFrequency: 15
+  firstHunterSpawn: 3
+  throwingFrequency: 0
+  harpoonSpeed: 50
 --- !u!1001 &1306521561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1926,6 +1963,10 @@ PrefabInstance:
     - target: {fileID: 3582877014822275613, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4343625295170574821, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
+      propertyPath: health
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4343625295170574821, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
       propertyPath: energyBar

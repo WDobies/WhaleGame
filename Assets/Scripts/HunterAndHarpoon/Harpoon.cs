@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class Harpoon : MonoBehaviour
 {
+    // difficulty level properties
+    [HideInInspector]
+    public float movementSpeed = 50.0f;
+
+    // other properties
     public GameObject warning;
     private Movement whale;
     //private Vector3 whaleTransform;
@@ -23,7 +28,7 @@ public class Harpoon : MonoBehaviour
     {
         
         float value = Random.Range(-spawnRange, spawnRange);
-        targetPosition = new Vector3(value, 0, 0);
+        targetPosition = new Vector3(value, -18, 0);
 
         transform.LookAt(targetPosition);
         Vector3 raySpawn = transform.position;
@@ -49,7 +54,7 @@ public class Harpoon : MonoBehaviour
             }
             //transform.LookAt(targetPosition);
 
-            Vector3 pos = Vector2.MoveTowards(transform.position, targetPosition, 55 * Time.deltaTime);
+            Vector3 pos = Vector2.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
             transform.position = pos;
 
             // Particles
@@ -81,7 +86,6 @@ public class Harpoon : MonoBehaviour
         if (other.gameObject.name == "Whale" && !stop)
         {
             whale = other.gameObject.GetComponent<Movement>();
-            whale.timesHit++;
 
             PlayerStats stats = other.gameObject.GetComponent<PlayerStats>();
             if(stats.health > 20)

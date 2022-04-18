@@ -9,9 +9,16 @@ public class Spawner : MonoBehaviour
 
     private Transform whaleTransform;
 
+    //difficulty level properties
+    private int hunterNumber = 3;
+    private float hunterSpawnFrequency = 15.0f;
+    private float firstHunterSpawn = 3.0f;
+    //other properties
+    private int currentHunterNumber = 0;
+
     void Start()
     {
-        InvokeRepeating("Spawn", 1, 3);
+        InvokeRepeating("Spawn", firstHunterSpawn, hunterSpawnFrequency);
     }
 
     void Spawn()
@@ -22,5 +29,10 @@ public class Spawner : MonoBehaviour
             harpoons[0].SetActive(true);
             harpoons.RemoveAt(0);
         }
+    }
+
+    private void Update()
+    {
+        
     }
 }

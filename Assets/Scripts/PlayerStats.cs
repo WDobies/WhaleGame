@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,5 +24,10 @@ public class PlayerStats : MonoBehaviour
     {
         healthBar.value = health;
         energyBar.value = energy;
+
+        if(health <= 0)
+        {
+            GameManager.instance.UpdateGameState(GameState.Lose);
+        }
     }
 }

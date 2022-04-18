@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public int  timesHit = 0;
     public float gravity;
 
     [SerializeField] private float sideForce; //300
