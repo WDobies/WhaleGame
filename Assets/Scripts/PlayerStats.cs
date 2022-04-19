@@ -11,20 +11,10 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float damagePerHarpoon = 20f;
     [SerializeField] public float energyGainedFromFood = 30f;
     [SerializeField] public float energyLostPerTouch = 5f;
-    [SerializeField] public Slider healthBar;
-    [SerializeField] public Slider energyBar;
 
-    public void Start()
-    {
-        healthBar.maxValue = health;
-        energyBar.maxValue = energy;
-    }
 
     public void Update()
     {
-        healthBar.value = health;
-        energyBar.value = energy;
-
         if(health <= 0)
         {
             GameManager.instance.UpdateGameState(GameState.Lose);

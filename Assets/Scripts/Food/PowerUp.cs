@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerUp : MonoBehaviour
 {
     [SerializeField] bool isHealthy = true;
     [SerializeField] float timeToStay = 3;
+
     private float time;
 
     private void Update()
@@ -32,11 +34,13 @@ public class PowerUp : MonoBehaviour
         {
             player.transform.localScale *= 1.02f;
             stats.energy += player.GetComponent<PlayerStats>().energyGainedFromFood;
+            Score.instance.AddPoint();
         }
         else
         {
             player.transform.localScale /= 1.02f;
             stats.energy -= player.GetComponent<PlayerStats>().energyGainedFromFood;
+            Score.instance.SubtractPoint();
         }
 
         Destroy(gameObject);

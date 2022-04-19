@@ -32,8 +32,8 @@ public class EatableSpawner : MonoBehaviour
     {
         int randomIndex = Random.Range(0, Spawners.Count);
 
-        Vector3 spawnPosition = new Vector3(Spawners[randomIndex].transform.position.x,
-                                            Spawners[randomIndex].transform.position.y,
+        Vector3 spawnPosition = new Vector3(Spawners[randomIndex].transform.position.x + Random.Range(-10, 10),
+                                            Spawners[randomIndex].transform.position.y + Random.Range(-10, 10),
                                             Spawners[randomIndex].transform.position.z);
 
         GameObject spawnEatable;
