@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Hunter : MonoBehaviour
 {
+    // Chasing variables
+    GameObject whale;
+    bool isChasing = false;
+    Vector3 hunterPos;
+    Vector3 whalePos;
+
     //difficulty level properties
     [HideInInspector]
     public float throwingFrequency = 7.0f;
@@ -19,21 +25,37 @@ public class Hunter : MonoBehaviour
     void Start()
     {
         //InvokeRepeating("SpawnHarpoon", 1, Random.Range(throwingFrequency, throwingFrequency*2));
+        whale = GameObject.FindGameObjectWithTag("Player");
+        hunterPos = transform.position;
+        whalePos = whale.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Mathf.Abs(hunterPos.x - whalePos.x));
         if (Time.time > nextActionTime)
         {
             nextActionTime = Time.time + Random.Range(throwingFrequency, throwingFrequency * 2);
             SpawnHarpoon();
         }
+        /*if (Mathf.Abs(hunterPos.x - whalePos.x) > 20 && isChasing == false)
+        {
+            Chase();
+        }*/
     }
 
     void SpawnHarpoon()
     {
         harpoon.GetComponent<Harpoon>().movementSpeed = harpoonSpeed;
         Instantiate(harpoon, transform.position, Quaternion.identity);
+    }
+
+    void Chase()
+    {
+        isChasing = true;
+        Debug.Log("I'm chasing the whale!");
+
+        //transform.position.x = Mathf.Lerp(hunterPos.x, whalePos.x, 3);
     }
 }

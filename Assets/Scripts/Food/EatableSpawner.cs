@@ -7,6 +7,7 @@ public class EatableSpawner : MonoBehaviour
     [SerializeField] public float spawnRate; // Set time between spawns
     [SerializeField] GameObject whalishFood; // Object which powers up the whale
     [SerializeField] GameObject oceanJunk; // Object which powers down the whale
+    [SerializeField] GameObject whale;
 
     private float time = 0;
     private bool isHealthy = false; // Determines if the object to eat is food or junk
@@ -32,8 +33,8 @@ public class EatableSpawner : MonoBehaviour
     {
         int randomIndex = Random.Range(0, Spawners.Count);
 
-        Vector3 spawnPosition = new Vector3(Spawners[randomIndex].transform.position.x + Random.Range(-10, 10),
-                                            Spawners[randomIndex].transform.position.y + Random.Range(-10, 10),
+        Vector3 spawnPosition = new Vector3(Spawners[randomIndex].transform.position.x + Random.Range(-10, 10) + whale.transform.position.x,
+                                            Spawners[randomIndex].transform.position.y + Random.Range(-10, 10) + whale.transform.position.y,
                                             Spawners[randomIndex].transform.position.z);
 
         GameObject spawnEatable;

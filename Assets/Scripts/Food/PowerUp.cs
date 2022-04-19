@@ -15,7 +15,6 @@ public class PowerUp : MonoBehaviour
         time += Time.deltaTime;
         if (time > timeToStay)
         {
-            Debug.Log("Eatable destroyed!");
             Destroy(gameObject);
         }
     }
