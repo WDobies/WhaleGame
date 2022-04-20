@@ -108,4 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560f647cbbe43514692769f44880c160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chasingSpeed: 10
+  throwingFrequency: 7
+  harpoonSpeed: 50
   harpoon: {fileID: 3148649047832350724, guid: a92660c900b654b41853e0a7d9022be7, type: 3}
+  nextActionTime: 1

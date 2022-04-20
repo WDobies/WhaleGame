@@ -9,6 +9,7 @@ public class Hunter : MonoBehaviour
     bool isChasing = false;
     Vector3 hunterPos;
     Vector3 whalePos;
+    [SerializeField] float chasingSpeed;
 
     //difficulty level properties
     [HideInInspector]
@@ -33,16 +34,18 @@ public class Hunter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Mathf.Abs(hunterPos.x - whalePos.x));
+        whalePos = whale.transform.position;
+        //hunterPos = transform.position;
+        //Debug.Log(Mathf.Abs(hunterPos.x - whalePos.x));
         if (Time.time > nextActionTime)
         {
             nextActionTime = Time.time + Random.Range(throwingFrequency, throwingFrequency * 2);
             SpawnHarpoon();
         }
-        /*if (Mathf.Abs(hunterPos.x - whalePos.x) > 20 && isChasing == false)
+        if (Mathf.Abs(hunterPos.x - whalePos.x) > 20)
         {
             Chase();
-        }*/
+        }
     }
 
     void SpawnHarpoon()
@@ -53,9 +56,11 @@ public class Hunter : MonoBehaviour
 
     void Chase()
     {
-        isChasing = true;
-        Debug.Log("I'm chasing the whale!");
+        Debug.Log("I'm chasing the whale! My pos along X axis is: " + transform.position.x);
 
-        //transform.position.x = Mathf.Lerp(hunterPos.x, whalePos.x, 3);
+        if (transform.position.x < whalePos.x)
+            transform.position += new Vector3(1 * chasingSpeed * Time.deltaTime, 0, 0);
+        else
+            transform.position -= new Vector3(1 * chasingSpeed * Time.deltaTime, 0, 0);
     }
 }
