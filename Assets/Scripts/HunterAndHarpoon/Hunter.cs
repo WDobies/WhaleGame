@@ -18,6 +18,9 @@ public class Hunter : MonoBehaviour
     [HideInInspector]
     public float harpoonSpeed = 50.0f;
 
+    [HideInInspector]
+    public float harpoonRange = 30.0f;
+
     //other properties
     public GameObject harpoon;
     public float nextActionTime = 1.0f;
@@ -51,6 +54,8 @@ public class Hunter : MonoBehaviour
     void SpawnHarpoon()
     {
         harpoon.GetComponent<Harpoon>().movementSpeed = harpoonSpeed;
+        harpoon.GetComponent<Harpoon>().whalePosition = whalePos;
+        harpoon.GetComponent<Harpoon>().spawnRange = harpoonRange;
         Instantiate(harpoon, transform.position, Quaternion.identity);
     }
 

@@ -9,11 +9,18 @@ public class Harpoon : MonoBehaviour
     [HideInInspector]
     public float movementSpeed = 50.0f;
 
+    [HideInInspector]
+    public float spawnRange = 24.0f;
+
     // other properties
     public GameObject warning;
+
+    [HideInInspector]
+    public Vector3 whalePosition;
+
     private Movement whale;
     //private Vector3 whaleTransform;
-    float spawnRange = 24.0f;
+    
     Vector3 targetPosition;
     bool stop = false;
     bool canUpdate = false;
@@ -27,7 +34,7 @@ public class Harpoon : MonoBehaviour
     void Start()
     {
         
-        float value = Random.Range(-spawnRange, spawnRange);
+        float value = Random.Range(whalePosition.x - (spawnRange), whalePosition.x + (spawnRange));
         targetPosition = new Vector3(value, -18, 0);
 
         transform.LookAt(targetPosition);

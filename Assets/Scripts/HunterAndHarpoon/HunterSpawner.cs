@@ -23,6 +23,8 @@ public class HunterSpawner : MonoBehaviour
     public float throwingFrequency = 0.0f;
     [HideInInspector]
     public float harpoonSpeed = 50.0f;
+    [HideInInspector]
+    public float harpoonRange = 30.0f;
 
     //harpoon settings
 
@@ -46,7 +48,8 @@ public class HunterSpawner : MonoBehaviour
 
         foreach ( GameObject spawnedHunter in spawnedHuntersList)
         {
-            spawnedHunter.GetComponent<Hunter>().throwingFrequency = throwingFrequency/difficultyMultiplier;
+            spawnedHunter.GetComponent<Hunter>().throwingFrequency = throwingFrequency / difficultyMultiplier;
+            spawnedHunter.GetComponent<Hunter>().harpoonRange = harpoonRange / difficultyMultiplier;
         }
         //if(spawnedHuntersList.Count == 0)
         //{
@@ -67,6 +70,7 @@ public class HunterSpawner : MonoBehaviour
         GameObject spawnHunter = Instantiate(hunter, transform, false);
         spawnHunter.transform.localPosition = spawnPosition;
         spawnHunter.GetComponent<Hunter>().harpoonSpeed = harpoonSpeed;
+        spawnHunter.GetComponent<Hunter>().harpoonRange = harpoonRange;
         spawnedHuntersList.Add(spawnHunter);
     }
 }

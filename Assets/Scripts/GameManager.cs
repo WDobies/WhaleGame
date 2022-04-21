@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float firstHunterSpawn = 3.0f;
     [SerializeField] public float throwingFrequency = 7.0f;
     [SerializeField] public float harpoonSpeed = 50.0f;
+    [SerializeField] public float harpoonRange = 30.0f;
 
     [Header("Difficulty Settings")]
     [SerializeField] public float difficultyMultiplierModifier = 0.01f;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
 
         hunterSpawner.throwingFrequency = throwingFrequency;
         hunterSpawner.harpoonSpeed = harpoonSpeed;
+        hunterSpawner.harpoonRange = harpoonRange;
     }
 
     // Update is called once per frame
