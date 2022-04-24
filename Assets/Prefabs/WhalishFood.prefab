@@ -110,6 +110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isHealthy: 1
+  timeToStay: 10
+  foodVelocity: 10
 --- !u!1001 &1402687670799934289
 PrefabInstance:
   m_ObjectHideFlags: 0

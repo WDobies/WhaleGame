@@ -7,8 +7,18 @@ public class PowerUp : MonoBehaviour
 {
     [SerializeField] bool isHealthy = true;
     [SerializeField] float timeToStay = 3;
+    [SerializeField] float foodVelocity = 10;
+    bool leftToRight;
 
     private float time;
+
+    private void Start()
+    {
+        if (transform.position.x >= GameObject.FindGameObjectWithTag("Player").transform.position.x) leftToRight = false;
+        else leftToRight = true;
+        
+
+    }
 
     private void Update()
     {
@@ -16,6 +26,14 @@ public class PowerUp : MonoBehaviour
         if (time > timeToStay)
         {
             Destroy(gameObject);
+        }
+        if (leftToRight == true)
+        {
+            transform.position += new Vector3(foodVelocity * Time.deltaTime, 0, 0);
+        }
+        else
+        {
+            transform.position -= new Vector3(foodVelocity * Time.deltaTime, 0, 0);
         }
     }
     private void OnTriggerEnter(Collider other)
