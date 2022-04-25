@@ -61,7 +61,7 @@ public class Hunter : MonoBehaviour
 
     void Chase()
     {
-        Debug.Log("I'm chasing the whale! My pos along X axis is: " + transform.position.x);
+        //Debug.Log("I'm chasing the whale! My pos along X axis is: " + transform.position.x);
 
         if (transform.position.x < whalePos.x)
             transform.position += new Vector3(1 * chasingSpeed * Time.deltaTime, 0, 0);

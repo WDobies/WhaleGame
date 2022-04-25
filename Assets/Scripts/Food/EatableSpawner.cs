@@ -5,6 +5,7 @@ using UnityEngine;
 public class EatableSpawner : MonoBehaviour
 {
     [SerializeField] public float spawnRate; // Set time between spawns
+    [SerializeField] public int junkRate;
     [SerializeField] GameObject whalishFood; // Object which powers up the whale
     [SerializeField] GameObject oceanJunk; // Object which powers down the whale
     [SerializeField] GameObject whale;
@@ -12,6 +13,7 @@ public class EatableSpawner : MonoBehaviour
 
     private float time = 0;
     private bool isHealthy = false; // Determines if the object to eat is food or junk
+    private int foodCounter = 0;
 
     [SerializeField] List<GameObject> Spawners;
 
@@ -23,11 +25,6 @@ public class EatableSpawner : MonoBehaviour
     public void Update()
     {
         time += Time.deltaTime;
-        if(time % 0.5 >= 0)
-        {
-            isHealthy = !isHealthy;
-            //Debug.Log(isHealthy);
-        }
 
     }
     void SpawnEatable()
@@ -44,15 +41,23 @@ public class EatableSpawner : MonoBehaviour
         else
         {
             spawnPosition = new Vector3(Spawners[randomIndex].transform.position.x + Random.Range(-10, 10),
-                                                Spawners[randomIndex].transform.position.y + Random.Range(-10, 10),
+                                                Spawners[randomIndex].transform.position.y + Random.Range(-30, 30),
                                                 Spawners[randomIndex].transform.position.z);
         }
 
         GameObject spawnEatable;
-        if (isHealthy)
+        if (foodCounter % junkRate != 0)
+        {
+            foodCounter++;
             spawnEatable = Instantiate(whalishFood, transform, false);
+            //Debug.Log(foodCounter + " Food spawned");
+        }
         else
+        {
+            foodCounter++;
             spawnEatable = Instantiate(oceanJunk, transform, false);
+            //Debug.Log(foodCounter + " " + junkRate + " junk spawned");
+        }
 
         spawnEatable.transform.position = spawnPosition;
 
