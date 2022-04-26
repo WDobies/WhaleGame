@@ -40,7 +40,7 @@ public class Harpoon : MonoBehaviour
         transform.LookAt(targetPosition);
         Vector3 raySpawn = transform.position;
         //raySpawn.y = raySpawn.y - 5;
-        spawnedWarning = Instantiate(warning, raySpawn, transform.rotation);
+        spawnedWarning = Instantiate(warning, raySpawn, transform.rotation, transform);
         Invoke("StartUpdating", 2);
 
         //currentHealth = stats.health;
@@ -52,14 +52,15 @@ public class Harpoon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!stop && canUpdate)
+        transform.LookAt(targetPosition);
+        if (!stop && canUpdate)
         {
-            
+            transform.parent = null;
             if (spawnedWarning != null)
             {
                 Destroy(spawnedWarning);
             }
-            //transform.LookAt(targetPosition);
+            
 
             Vector3 pos = Vector2.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
             transform.position = pos;
@@ -78,7 +79,7 @@ public class Harpoon : MonoBehaviour
         }
 
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "ground")
