@@ -9,6 +9,7 @@ public class EatableSpawner : MonoBehaviour
     [SerializeField] GameObject whalishFood; // Object which powers up the whale
     [SerializeField] GameObject oceanJunk; // Object which powers down the whale
     [SerializeField] GameObject whale;
+    [SerializeField] private float randXYPosRange = 10;
     [SerializeField] bool isWhalePosBased = false;
 
     private float time = 0;
@@ -19,7 +20,7 @@ public class EatableSpawner : MonoBehaviour
 
     public void Start()
     {
-        InvokeRepeating("SpawnEatable", 1, Random.Range(1, spawnRate));
+        InvokeRepeating("SpawnEatable", 1, Random.Range(0, spawnRate));
     }
 
     public void Update()
@@ -40,8 +41,8 @@ public class EatableSpawner : MonoBehaviour
         }
         else
         {
-            spawnPosition = new Vector3(Spawners[randomIndex].transform.position.x + Random.Range(-10, 10),
-                                                Spawners[randomIndex].transform.position.y + Random.Range(-30, 30),
+            spawnPosition = new Vector3(Spawners[randomIndex].transform.position.x + Random.Range(-randXYPosRange, randXYPosRange),
+                                                Spawners[randomIndex].transform.position.y + Random.Range(-randXYPosRange, randXYPosRange),
                                                 Spawners[randomIndex].transform.position.z);
         }
 
