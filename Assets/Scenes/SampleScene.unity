@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.3352007, g: 0.47975045, b: 0.51622915, a: 1}
+  m_IndirectSpecularColor: {r: 0.42876637, g: 0.6669421, b: 0.7058535, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10122,6 +10122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b6bc2c76216d6c46a1ce22ba3072ddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUnderwater: 1
   target: {fileID: 1058527556}
   speed: 0.05
   offset: {x: 0, y: 2, z: 60}
@@ -14404,12 +14405,28 @@ PrefabInstance:
       value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
+      propertyPath: oceanEdge
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
       propertyPath: sideForce
       value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
+      propertyPath: airGravity
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
       propertyPath: upDownForce
       value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
+      propertyPath: waterGravity
+      value: -3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 637fa16e41b58734ea8643b07494530a, type: 3}

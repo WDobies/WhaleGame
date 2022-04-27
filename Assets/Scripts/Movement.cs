@@ -5,9 +5,13 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float gravity;
+    public float airGravity;
+    public float waterGravity;
 
     [SerializeField] private float sideForce; //300
     [SerializeField] private float upDownForce; //400
+    [SerializeField] private float oceanEdge; //36
+    [SerializeField] Camera mainCamera;
     private int width;
     private int height;
     private bool isColiding = false;
@@ -19,35 +23,47 @@ public class Movement : MonoBehaviour
         rb.centerOfMass = Vector3.zero; //helps avoid moving on Z axis
         width = Screen.width / 2;
         height = Screen.height / 2;
+
     }
     void Update()
     {
         //Physics.gravity = new Vector3(0, -4.5f-(timesHit*4), 0);
         Physics.gravity = new Vector3(0, gravity, 0);
 
-        if (Input.touchCount > 0)
+        if (transform.position.y < oceanEdge)
         {
-            Touch touch = Input.GetTouch(0);
-
-            if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y > height)
+            mainCamera.GetComponent<CameraFollow>().isUnderwater = true;
+            gravity = waterGravity;
+            if (Input.touchCount > 0)
             {
-                rb.AddForce(-sideForce, upDownForce, 0);
+                Touch touch = Input.GetTouch(0);
+                {
+                    if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y > height)
+                    {
+                        rb.AddForce(-sideForce, upDownForce, 0);
+                    }
+
+                    if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y > height)
+                    {
+                        rb.AddForce(sideForce, upDownForce, 0);
+                    }
+
+                    if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y < height)
+                    {
+                        rb.AddForce(-sideForce, -upDownForce, 0);
+                    }
+
+                    if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y < height)
+                    {
+                        rb.AddForce(sideForce, -upDownForce, 0);
+                    }
+                }
             }
-
-            if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y > height)
-            {
-                rb.AddForce(sideForce, upDownForce, 0);
-            }
-
-            if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y < height)
-            {
-                rb.AddForce(-sideForce, -upDownForce, 0);
-            }
-
-            if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y < height)
-            {
-                rb.AddForce(sideForce, -upDownForce, 0);
-            }        
+        }
+        else
+        {
+            gravity = airGravity;
+            mainCamera.GetComponent<CameraFollow>().isUnderwater = false;
         }
 
    
