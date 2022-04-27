@@ -1617,7 +1617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eec43a9889efc74e98a3cea44203b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 1
+  spawnRate: 3
   junkRate: 3
   whalishFood: {fileID: 3863246001633358482, guid: 519c03a12ab7efa47bcad96967f3f2fc, type: 3}
   oceanJunk: {fileID: 8365698056681144179, guid: eb9253336e98f45449e4cc988ba7b664, type: 3}
@@ -14371,7 +14371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4343625295170574821, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
       propertyPath: health
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4343625295170574821, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
       propertyPath: energyBar

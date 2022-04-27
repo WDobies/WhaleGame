@@ -28,6 +28,8 @@ public class Harpoon : MonoBehaviour
     ParticleSystem instantiatedBubbles;
     bool bubbleSpawned = false;
 
+    [SerializeField] ParticleSystem Blood = null;
+    private bool isMovementFinished = false;
     private GameObject spawnedWarning;
 
     // Start is called before the first frame update
@@ -52,7 +54,9 @@ public class Harpoon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(targetPosition);
+        if (isMovementFinished == false)
+            transform.LookAt(targetPosition);
+        
         if (!stop && canUpdate)
         {
             transform.parent = null;
@@ -90,6 +94,7 @@ public class Harpoon : MonoBehaviour
             // Particles
             if (instantiatedBubbles.isEmitting == true)
                 instantiatedBubbles.Stop();
+            isMovementFinished = true;
         }
         if (other.gameObject.name == "Whale" && !stop)
         {
@@ -115,6 +120,10 @@ public class Harpoon : MonoBehaviour
             if (instantiatedBubbles.isEmitting == true)
                 instantiatedBubbles.Stop();
 
+            if (Blood.isEmitting == false)
+                Blood.Play();
+
+            isMovementFinished = true;
             //healthBar.SetSliderValue(stats.health);
         }
     }
