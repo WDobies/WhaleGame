@@ -4,53 +4,82 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public bool doubleScreen = false;
+    public float gravity;
+    public float airGravity;
+    public float waterGravity;
+
+    [SerializeField] private float sideForce; //300
+    [SerializeField] private float upDownForce; //400
+    [SerializeField] private float oceanEdge; //36
+    [SerializeField] Camera mainCamera;
     private int width;
     private int height;
-    Rigidbody rigidbody;
+    private bool isColiding = false;
+    private Rigidbody rb;
 
     private void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = Vector3.zero; //helps avoid moving on Z axis
+        width = Screen.width / 2;
+        height = Screen.height / 2;
+
     }
     void Update()
     {
-        Physics.gravity = new Vector3(0, -4.5f, 0);
-        
-        if (Input.touchCount > 0)
+        //Physics.gravity = new Vector3(0, -4.5f-(timesHit*4), 0);
+        Physics.gravity = new Vector3(0, gravity, 0);
+
+        if (transform.position.y < oceanEdge)
         {
-            Touch touch = Input.GetTouch(0);
-
-            if (doubleScreen)
+            mainCamera.GetComponent<CameraFollow>().isUnderwater = true;
+            gravity = waterGravity;
+            if (Input.touchCount > 0)
             {
-                upMovement(touch);
+                Touch touch = Input.GetTouch(0);
+                {
+                    if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y > height)
+                    {
+                        rb.AddForce(-sideForce, upDownForce, 0);
+                    }
+
+                    if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y > height)
+                    {
+                        rb.AddForce(sideForce, upDownForce, 0);
+                    }
+
+                    if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y < height)
+                    {
+                        rb.AddForce(-sideForce, -upDownForce, 0);
+                    }
+
+                    if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y < height)
+                    {
+                        rb.AddForce(sideForce, -upDownForce, 0);
+                    }
+                }
             }
-            else
-            {
-                upMovement(touch);
-
-                if (touch.position.x > Screen.width / 2 && touch.phase == TouchPhase.Began && touch.position.y < Screen.height / 2)
-                {
-                    rigidbody.AddForce(-150, -300.5f, 0);
-                }
-                if (touch.position.x < Screen.width / 2 && touch.phase == TouchPhase.Began && touch.position.y < Screen.height / 2)
-                {
-                    rigidbody.AddForce(150, -300.5f, 0);
-                }
-            }    
         }
-        transform.forward += -GetComponent<Rigidbody>().velocity.normalized * 0.05f;
+        else
+        {
+            gravity = airGravity;
+            mainCamera.GetComponent<CameraFollow>().isUnderwater = false;
+        }
+
+   
+        if(!isColiding)
+            transform.forward += -rb.velocity.normalized * 0.05f;
     }
 
-    void upMovement(Touch touch)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (touch.position.x > Screen.width / 2 && touch.phase == TouchPhase.Began)
+        if (collision.gameObject.CompareTag("Ground"))
         {
-            rigidbody.AddForce(-300, 200.5f, 0);
+            isColiding = true;
         }
-        if (touch.position.x < Screen.width / 2 && touch.phase == TouchPhase.Began)
-        {
-            rigidbody.AddForce(300, 200.5f, 0);
-        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        isColiding = false;
     }
 }
