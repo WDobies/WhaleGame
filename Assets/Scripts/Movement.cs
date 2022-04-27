@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float sideForce; //300
     [SerializeField] private float upDownForce; //400
+    [SerializeField] private float maxSpeed;
+    [SerializeField] private float closeToMaxVelocityForceDivider = 10;
     [SerializeField] private float oceanEdge; //36
     [SerializeField] Camera mainCamera;
     private int width;
@@ -23,12 +25,13 @@ public class Movement : MonoBehaviour
         rb.centerOfMass = Vector3.zero; //helps avoid moving on Z axis
         width = Screen.width / 2;
         height = Screen.height / 2;
-
     }
     void Update()
     {
         //Physics.gravity = new Vector3(0, -4.5f-(timesHit*4), 0);
         Physics.gravity = new Vector3(0, gravity, 0);
+
+        float speed = Mathf.Sqrt(Mathf.Pow(rb.velocity.x, 2) + Mathf.Pow(rb.velocity.y, 2));
 
         if (transform.position.y < oceanEdge)
         {
@@ -37,6 +40,7 @@ public class Movement : MonoBehaviour
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
+                if (speed < maxSpeed)
                 {
                     if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y > height)
                     {
@@ -56,6 +60,30 @@ public class Movement : MonoBehaviour
                     if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y < height)
                     {
                         rb.AddForce(sideForce, -upDownForce, 0);
+                    }
+                }
+
+                else if (speed >= maxSpeed)
+                {
+                    Debug.Log("You have reached top speed: " + maxSpeed + "Present speed: " + speed);
+                    if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y > height)
+                    {
+                        rb.AddForce(-sideForce / closeToMaxVelocityForceDivider, upDownForce / closeToMaxVelocityForceDivider, 0);
+                    }
+
+                    if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y > height)
+                    {
+                        rb.AddForce(sideForce / closeToMaxVelocityForceDivider, upDownForce / closeToMaxVelocityForceDivider, 0);
+                    }
+
+                    if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y < height)
+                    {
+                        rb.AddForce(-sideForce / closeToMaxVelocityForceDivider, -upDownForce / closeToMaxVelocityForceDivider, 0);
+                    }
+
+                    if (touch.position.x < width && touch.phase == TouchPhase.Began && touch.position.y < height)
+                    {
+                        rb.AddForce(sideForce / closeToMaxVelocityForceDivider, -upDownForce / closeToMaxVelocityForceDivider, 0);
                     }
                 }
             }

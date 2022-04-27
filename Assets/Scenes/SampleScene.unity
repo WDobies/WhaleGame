@@ -1617,11 +1617,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eec43a9889efc74e98a3cea44203b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 5
+  spawnRate: 1
   junkRate: 3
   whalishFood: {fileID: 3863246001633358482, guid: 519c03a12ab7efa47bcad96967f3f2fc, type: 3}
   oceanJunk: {fileID: 8365698056681144179, guid: eb9253336e98f45449e4cc988ba7b664, type: 3}
   whale: {fileID: 1058527550}
+  randXYPosRange: 8.5
   isWhalePosBased: 0
   Spawners:
   - {fileID: 1553390377}
@@ -1634,7 +1635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179395701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 970.0144, y: 73.79991, z: 0}
+  m_LocalPosition: {x: -0.2, y: 7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 325599777}
@@ -2918,7 +2919,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325599776}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -149.4696, y: 281.6571, z: 0}
+  m_LocalPosition: {x: 0.2, y: -7.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1553390378}
@@ -4631,7 +4632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 475685135}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 414.1, y: 9.6913, z: 0}
+  m_LocalPosition: {x: 153.80002, y: 9.6913, z: 0}
   m_LocalScale: {x: 2.5, y: 59.051, z: 42.516}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6904,7 +6905,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643625536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -379, y: 9.6913, z: 0}
+  m_LocalPosition: {x: -159.3999, y: 9.6913, z: 0}
   m_LocalScale: {x: 2.5, y: 59.051, z: 42.516}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13248,8 +13249,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276299190}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -401.9, y: -347.8, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 158.34479, y: 9.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 325599777}
@@ -14405,6 +14406,10 @@ PrefabInstance:
       value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
+      propertyPath: maxSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
       propertyPath: oceanEdge
       value: 30
       objectReference: {fileID: 0}
@@ -14427,6 +14432,10 @@ PrefabInstance:
     - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
       propertyPath: waterGravity
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6994978489680707331, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
+      propertyPath: closeToMaxVelocityForceDivider
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 637fa16e41b58734ea8643b07494530a, type: 3}
@@ -16207,8 +16216,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553390377}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1206.4, y: -347.3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -166.25513, y: 9.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 325599777}

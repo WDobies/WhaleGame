@@ -13,6 +13,7 @@ public class PowerUp : MonoBehaviour
     [SerializeField] bool isMovingUpAndDown = true;
     bool leftToRight;
     bool isMovingUp = true;
+    private Vector3 spawnerPosOffset;
 
     private float time;
 
@@ -20,6 +21,7 @@ public class PowerUp : MonoBehaviour
     {
         if (transform.position.x >= GameObject.FindGameObjectWithTag("Player").transform.position.x) leftToRight = false;
         else leftToRight = true;
+        spawnerPosOffset = transform.position;
     }
 
     private void Update()
@@ -30,17 +32,17 @@ public class PowerUp : MonoBehaviour
             Destroy(gameObject);
         }
 
-        int tempTime = (int)time / upAndDownTime;
-        if (tempTime % 2 == 0) isMovingUp = false;
+        int tempTime = (int)time;
+        if (tempTime % upAndDownTime == 0) isMovingUp = false;
         else isMovingUp = true;
 
         if (isMovingUpAndDown == true)
         {
-            if (isMovingUp == true && transform.position.y < maxYMovement)
+            if (isMovingUp == true && transform.position.y < spawnerPosOffset.y + maxYMovement)
             {
                 transform.position += new Vector3(0, foodVelocity * Time.deltaTime, 0);
             }
-            else if (isMovingUp == false && transform.position.y > -maxYMovement)
+            else if (isMovingUp == false && transform.position.y > spawnerPosOffset.y - maxYMovement)
             {
                 transform.position -= new Vector3(0, foodVelocity * Time.deltaTime, 0);
             }
