@@ -13,13 +13,7 @@ public class Hunter : MonoBehaviour
 
     //difficulty level properties
     [HideInInspector]
-    public float throwingFrequency = 7.0f;
-
-    [HideInInspector]
-    public float harpoonSpeed = 50.0f;
-
-    [HideInInspector]
-    public float harpoonRange = 30.0f;
+    private float throwingFrequency = 7.0f;
 
     //other properties
     public GameObject harpoon;
@@ -37,6 +31,8 @@ public class Hunter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        throwingFrequency = GameManager.instance.throwingFrequency / GameManager.instance.difficultyMultiplierBase;
+
         whalePos = whale.transform.position;
         //hunterPos = transform.position;
         //Debug.Log(Mathf.Abs(hunterPos.x - whalePos.x));
@@ -53,9 +49,7 @@ public class Hunter : MonoBehaviour
 
     void SpawnHarpoon()
     {
-        harpoon.GetComponent<Harpoon>().movementSpeed = harpoonSpeed;
         harpoon.GetComponent<Harpoon>().whalePosition = whalePos;
-        harpoon.GetComponent<Harpoon>().spawnRange = harpoonRange;
         Instantiate(harpoon, transform.position, Quaternion.identity, transform);
         //Instantiate(harpoon, transform, true);
     }
