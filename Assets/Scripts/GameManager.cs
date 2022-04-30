@@ -42,15 +42,6 @@ public class GameManager : MonoBehaviour
     {
         UpdateGameState(GameState.GameLoop);
 
-        hunterSpawner.difficultyMultiplier = difficultyMultiplierBase;
-
-        hunterSpawner.maxHunterNumber = maxHunterNumber;
-        hunterSpawner.hunterSpawnFrequency = hunterSpawnFrequency;
-        hunterSpawner.firstHunterSpawn = firstHunterSpawn;
-
-        hunterSpawner.throwingFrequency = throwingFrequency;
-        hunterSpawner.harpoonSpeed = harpoonSpeed;
-        hunterSpawner.harpoonRange = harpoonRange;
     }
 
     // Update is called once per frame
@@ -62,10 +53,6 @@ public class GameManager : MonoBehaviour
         {
             difficultyMultiplierBase += ((60/timer) * difficultyMultiplierModifier);
         }
-
-        hunterSpawner.difficultyMultiplier = difficultyMultiplierBase;
-
-        //Debug.Log(state);
 
     }
     public void UpdateGameState(GameState newState)

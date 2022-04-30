@@ -7,10 +7,10 @@ public class Harpoon : MonoBehaviour
 {
     // difficulty level properties
     [HideInInspector]
-    public float movementSpeed = 50.0f;
+    private float movementSpeed = 50.0f;
 
     [HideInInspector]
-    public float spawnRange = 24.0f;
+    private float spawnRange = 24.0f;
 
     // other properties
     public GameObject warning;
@@ -35,7 +35,9 @@ public class Harpoon : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        movementSpeed = GameManager.instance.harpoonSpeed;
+        spawnRange = GameManager.instance.harpoonRange / GameManager.instance.difficultyMultiplierBase;
+
         float value = Random.Range(whalePosition.x - (spawnRange), whalePosition.x + (spawnRange));
         targetPosition = new Vector3(value, -18, 0);
 

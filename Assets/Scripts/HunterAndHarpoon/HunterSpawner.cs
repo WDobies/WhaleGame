@@ -8,29 +8,25 @@ public class HunterSpawner : MonoBehaviour
 
     public GameObject hunter;
 
-    //difficulty level properties
-    [HideInInspector]
-    public float difficultyMultiplier = 0.0f;
-
     //hunters settings
     [HideInInspector]
-    public int maxHunterNumber = 3;
+    private int maxHunterNumber = 3;
     [HideInInspector]
-    public float hunterSpawnFrequency = 15.0f;
+    private float hunterSpawnFrequency = 15.0f;
     [HideInInspector]
-    public float firstHunterSpawn = 3.0f;
-    [HideInInspector]
-    public float throwingFrequency = 0.0f;
-    [HideInInspector]
-    public float harpoonSpeed = 50.0f;
-    [HideInInspector]
-    public float harpoonRange = 30.0f;
+    private float firstHunterSpawn = 3.0f;
 
     //harpoon settings
 
     //other properties
     private int currentHunterNumber = 0;
-  
+
+    private void Awake()
+    {
+        maxHunterNumber = GameManager.instance.maxHunterNumber;
+        hunterSpawnFrequency = GameManager.instance.hunterSpawnFrequency;
+        firstHunterSpawn = GameManager.instance.firstHunterSpawn;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -45,21 +41,6 @@ public class HunterSpawner : MonoBehaviour
         {
             CancelInvoke("SpawnHunter");
         }
-
-        foreach ( GameObject spawnedHunter in spawnedHuntersList)
-        {
-            spawnedHunter.GetComponent<Hunter>().throwingFrequency = throwingFrequency / difficultyMultiplier;
-            spawnedHunter.GetComponent<Hunter>().harpoonRange = harpoonRange / difficultyMultiplier;
-        }
-        //if(spawnedHuntersList.Count == 0)
-        //{
-        //    float spawnRange = 24.0f;
-        //    float value = Random.Range(-spawnRange, spawnRange);
-        //    Vector3 spawnPosition = new Vector3(value, 0, 0);
-        //    GameObject spawnHunter = Instantiate(hunter, transform, false);
-        //    spawnHunter.transform.localPosition = spawnPosition;
-        //    spawnedHuntersList.Add(spawnHunter);
-        //}
     }
 
     void SpawnHunter()
@@ -69,8 +50,6 @@ public class HunterSpawner : MonoBehaviour
         Vector3 spawnPosition = new Vector3(value, 0, 0);
         GameObject spawnHunter = Instantiate(hunter, transform, false);
         spawnHunter.transform.localPosition = spawnPosition;
-        spawnHunter.GetComponent<Hunter>().harpoonSpeed = harpoonSpeed;
-        spawnHunter.GetComponent<Hunter>().harpoonRange = harpoonRange;
         spawnedHuntersList.Add(spawnHunter);
     }
 }
