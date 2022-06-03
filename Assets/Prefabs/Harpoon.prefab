@@ -47,8 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e0db38e3e8d454b9a44a8a841c0cd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 50
-  spawnRange: 24
   warning: {fileID: 6449024889665053373, guid: b95bb40d59c0cb44fbf7bf1437ebed43, type: 3}
   whalePosition: {x: 0, y: 0, z: 0}
   Bubbles: {fileID: 4868927955960059026, guid: d5548029793e0944f933632e70adf630, type: 3}
@@ -142,7 +140,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4fa4346277f5c11448511988196cd565, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

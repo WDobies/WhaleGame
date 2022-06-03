@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4fa4346277f5c11448511988196cd565, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,8 +140,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chasingSpeed: 10
-  throwingFrequency: 7
-  harpoonSpeed: 50
-  harpoonRange: 30
   harpoon: {fileID: 3148649047832350724, guid: a92660c900b654b41853e0a7d9022be7, type: 3}
   nextActionTime: 1
