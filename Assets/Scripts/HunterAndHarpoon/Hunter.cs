@@ -18,6 +18,7 @@ public class Hunter : MonoBehaviour
     //other properties
     public GameObject harpoon;
     public float nextActionTime = 1.0f;
+    public bool justSpawned = true;
     
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class Hunter : MonoBehaviour
         whale = GameObject.FindGameObjectWithTag("Player");
         hunterPos = transform.position;
         whalePos = whale.transform.position;
+        Invoke("ChangeSpawnedStatus", 3.0f);
     }
 
     // Update is called once per frame
@@ -84,5 +86,20 @@ public class Hunter : MonoBehaviour
         //    return true;
         //}
         return false;
+    }
+
+    private void OnTriggerEnter(UnityEngine.Collider other)
+    {
+        if (other.gameObject.layer == 7 && justSpawned)
+        {
+            float value = Random.Range(30.0f, 20.0f);
+            Vector3 spawnPosition = new Vector3(value, 0, 0);
+            transform.localPosition = spawnPosition;
+        }
+    }
+
+    private void ChangeSpawnedStatus()
+    {
+        justSpawned = false;
     }
 }

@@ -98,7 +98,7 @@ public class Harpoon : MonoBehaviour
                 instantiatedBubbles.Stop();
             isMovementFinished = true;
         }
-        if (other.gameObject.name == "Whale" && !stop)
+        if (other.gameObject.name == "Whale" && !stop && canUpdate)
         {
             whale = other.gameObject.GetComponent<Movement>();
 
@@ -114,7 +114,7 @@ public class Harpoon : MonoBehaviour
             }
 
             this.transform.parent = other.transform;
-            //Physics.IgnoreCollision(other, this.transform.parent.GetComponent<BoxCollider>());
+
             this.transform.GetComponent<Rigidbody>().detectCollisions = false;
             stop = true;
 
