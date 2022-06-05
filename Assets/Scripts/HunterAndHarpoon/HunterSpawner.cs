@@ -45,11 +45,20 @@ public class HunterSpawner : MonoBehaviour
 
     void SpawnHunter()
     {
-        float spawnRange = 24.0f;
+        float spawnRange = 30.0f;
         float value = Random.Range(-spawnRange, spawnRange);
         Vector3 spawnPosition = new Vector3(value, 0, 0);
         GameObject spawnHunter = Instantiate(hunter, transform, false);
         spawnHunter.transform.localPosition = spawnPosition;
-        spawnedHuntersList.Add(spawnHunter);
+        if(!spawnHunter.GetComponent<Hunter>().DetectHunter(Vector3.right, GameManager.instance.hunterDetectionDistance) && !spawnHunter.GetComponent<Hunter>().DetectHunter(Vector3.left, GameManager.instance.hunterDetectionDistance))
+        {
+            spawnedHuntersList.Add(spawnHunter);
+        }
+        else
+        {
+            Destroy(spawnHunter);
+            SpawnHunter();
+        }
+        
     }
 }

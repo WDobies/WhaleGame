@@ -57,10 +57,32 @@ public class Hunter : MonoBehaviour
     void Chase()
     {
         //Debug.Log("I'm chasing the whale! My pos along X axis is: " + transform.position.x);
-
-        if (transform.position.x < whalePos.x)
+        //Debug.Log(DetectHunter(transform.TransformDirection(Vector3.right)));
+       
+        if (transform.position.x < whalePos.x && !DetectHunter(Vector3.right, GameManager.instance.hunterDetectionDistance))
             transform.position += new Vector3(1 * chasingSpeed * Time.deltaTime, 0, 0);
-        else
+        else if(transform.position.x > whalePos.x && !DetectHunter(Vector3.left, GameManager.instance.hunterDetectionDistance))
             transform.position -= new Vector3(1 * chasingSpeed * Time.deltaTime, 0, 0);
+    }
+
+    public bool DetectHunter( Vector3 direction, float detectionDistance )
+    {
+        // Bit shift the index of the layer (7) to get a bit mask
+        int layerMask = 1 << 7;
+
+        // This cast rays only against colliders in layer 7.
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, direction, out hit, detectionDistance, layerMask))
+        {
+            //Debug.DrawRay(transform.position, direction * hit.distance, Color.yellow);
+            return true;
+        }
+        //else if(Physics.Raycast(transform.position, direction, out hit, Mathf.Infinity, layerMask))
+        //{
+            //Debug.DrawRay(transform.position, direction * hit.distance, Color.red);
+        //    return true;
+        //}
+        return false;
     }
 }

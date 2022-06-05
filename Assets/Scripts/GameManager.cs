@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("General Gameplay Settings")]
     [SerializeField] public int maxHunterNumber = 3;
     [SerializeField] public float hunterSpawnFrequency = 15.0f;
+    [SerializeField] public float hunterDetectionDistance = 30.0f;
     [SerializeField] public float firstHunterSpawn = 3.0f;
     [SerializeField] public float throwingFrequency = 7.0f;
     [SerializeField] public float harpoonSpeed = 50.0f;

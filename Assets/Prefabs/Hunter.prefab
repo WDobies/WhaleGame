@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2440162436263443680}
   - component: {fileID: 6708206673009558116}
   - component: {fileID: 4080478949602517748}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1715382677361974322}
   - component: {fileID: -7738836254950005760}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
