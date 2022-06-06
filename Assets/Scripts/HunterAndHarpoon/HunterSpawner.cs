@@ -45,7 +45,7 @@ public class HunterSpawner : MonoBehaviour
 
     void SpawnHunter()
     {
-        float spawnRange = 1.0f;
+        float spawnRange = 50.0f;
         float value = Random.Range(-spawnRange, spawnRange);
         Vector3 spawnPosition = new Vector3(value, 0, 0);
         GameObject spawnHunter = Instantiate(hunter, transform, false);
