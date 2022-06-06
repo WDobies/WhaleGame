@@ -70,13 +70,11 @@ public class PowerUp : MonoBehaviour
         PlayerStats stats = player.GetComponent<PlayerStats>();
         if(isHealthy)
         {
-            player.transform.localScale *= 1.02f;
             stats.energy += player.GetComponent<PlayerStats>().energyGainedFromFood;
             Score.instance.AddPoint();
         }
         else
         {
-            player.transform.localScale /= 1.02f;
             stats.energy -= player.GetComponent<PlayerStats>().energyGainedFromFood;
             Score.instance.SubtractPoint();
         }

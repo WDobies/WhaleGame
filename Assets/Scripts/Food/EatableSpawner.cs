@@ -12,18 +12,18 @@ public class EatableSpawner : MonoBehaviour
     [SerializeField] private float randXYPosRange = 10;
     [SerializeField] bool isWhalePosBased = false;
 
-    private float time = 0;
-    private bool isHealthy = false; // Determines if the object to eat is food or junk
+    public float time = 0;
     private int foodCounter = 0;
 
     [SerializeField] List<GameObject> Spawners;
 
     public void Start()
     {
+        time = 0;
         InvokeRepeating("SpawnEatable", 1, Random.Range(0, spawnRate));
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         time += Time.deltaTime;
 
@@ -36,14 +36,14 @@ public class EatableSpawner : MonoBehaviour
         if (isWhalePosBased == true)
         {
             spawnPosition = new Vector3(Spawners[randomIndex].transform.position.x + Random.Range(-10, 10) + whale.transform.position.x,
-                                                Spawners[randomIndex].transform.position.y + Random.Range(-10, 10) + whale.transform.position.y,
-                                                Spawners[randomIndex].transform.position.z);
+                                        Spawners[randomIndex].transform.position.y + Random.Range(-10, 10) + whale.transform.position.y,
+                                        Spawners[randomIndex].transform.position.z);
         }
         else
         {
             spawnPosition = new Vector3(Spawners[randomIndex].transform.position.x + Random.Range(-randXYPosRange, randXYPosRange),
-                                                Spawners[randomIndex].transform.position.y + Random.Range(-randXYPosRange, randXYPosRange),
-                                                Spawners[randomIndex].transform.position.z);
+                                        Spawners[randomIndex].transform.position.y + Random.Range(-randXYPosRange, randXYPosRange),
+                                        Spawners[randomIndex].transform.position.z);
         }
 
         GameObject spawnEatable;
