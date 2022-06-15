@@ -51,9 +51,7 @@ public class Hunter : MonoBehaviour
 
     void SpawnHarpoon()
     {
-        harpoon.GetComponent<Harpoon>().whalePosition = whalePos;
         Instantiate(harpoon, transform.position, Quaternion.identity, transform);
-        //Instantiate(harpoon, transform, true);
     }
 
     void Chase()

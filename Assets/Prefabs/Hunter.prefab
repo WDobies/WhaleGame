@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2440162436263443680}
   - component: {fileID: 6708206673009558116}
   - component: {fileID: 4080478949602517748}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: -7738836254950005760}
   - component: {fileID: 2466886497902403028}
   - component: {fileID: -3218108133120150902}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hunter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,6 +144,7 @@ MonoBehaviour:
   chasingSpeed: 10
   harpoon: {fileID: 3148649047832350724, guid: a92660c900b654b41853e0a7d9022be7, type: 3}
   nextActionTime: 1
+  justSpawned: 1
 --- !u!65 &2466886497902403028
 BoxCollider:
   m_ObjectHideFlags: 0

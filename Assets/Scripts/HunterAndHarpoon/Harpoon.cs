@@ -20,7 +20,7 @@ public class Harpoon : MonoBehaviour
 
     private Movement whale;
     //private Vector3 whaleTransform;
-    
+
     Vector3 targetPosition;
     bool stop = false;
     bool canUpdate = false;
@@ -58,7 +58,7 @@ public class Harpoon : MonoBehaviour
     {
         if (isMovementFinished == false)
             transform.LookAt(targetPosition);
-        
+
         if (!stop && canUpdate)
         {
             transform.parent = null;
@@ -66,7 +66,7 @@ public class Harpoon : MonoBehaviour
             {
                 Destroy(spawnedWarning);
             }
-            
+
 
             Vector3 pos = Vector2.MoveTowards(transform.position, targetPosition, movementSpeed * Time.deltaTime);
             transform.position = pos;
@@ -85,7 +85,7 @@ public class Harpoon : MonoBehaviour
         }
 
     }
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "ground")
@@ -103,7 +103,7 @@ public class Harpoon : MonoBehaviour
             whale = other.gameObject.GetComponent<Movement>();
 
             PlayerStats stats = other.gameObject.GetComponent<PlayerStats>();
-            if(stats.health > 20)
+            if (stats.health > 20)
             {
                 stats.health -= other.gameObject.GetComponent<PlayerStats>().damagePerHarpoon;
             }
@@ -132,7 +132,7 @@ public class Harpoon : MonoBehaviour
 
     void SpawnBubbles()
     {
-        instantiatedBubbles =  Instantiate(Bubbles, transform.position, Quaternion.identity);
+        instantiatedBubbles = Instantiate(Bubbles, transform.position, Quaternion.identity);
     }
 
     void StartUpdating()

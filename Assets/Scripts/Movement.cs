@@ -94,9 +94,9 @@ public class Movement : MonoBehaviour
             mainCamera.GetComponent<CameraFollow>().isUnderwater = false;
         }
 
-   
-        if(!isColiding)
-            transform.forward += -rb.velocity.normalized * 0.05f;
+
+        if (!isColiding)
+            transform.forward += -rb.velocity.normalized * 0.2f;
     }
 
     private void OnCollisionEnter(Collision collision)

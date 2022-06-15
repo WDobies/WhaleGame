@@ -23,7 +23,7 @@ public class HunterSpawner : MonoBehaviour
 
     private void Awake()
     {
-        maxHunterNumber = GameManager.instance.maxHunterNumber;
+        //maxHunterNumber = GameManager.instance.maxHunterNumber;
         hunterSpawnFrequency = GameManager.instance.hunterSpawnFrequency;
         firstHunterSpawn = GameManager.instance.firstHunterSpawn;
     }
@@ -31,13 +31,13 @@ public class HunterSpawner : MonoBehaviour
     void Start()
     {
         spawnedHuntersList = new List<GameObject>();
-        InvokeRepeating("SpawnHunter", firstHunterSpawn, Random.Range(hunterSpawnFrequency, hunterSpawnFrequency+10));
+        InvokeRepeating("SpawnHunter", firstHunterSpawn, Random.Range(hunterSpawnFrequency, hunterSpawnFrequency + 10));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(spawnedHuntersList.Count == maxHunterNumber)
+        if (spawnedHuntersList.Count == maxHunterNumber)
         {
             CancelInvoke("SpawnHunter");
         }
