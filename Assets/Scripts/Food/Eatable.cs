@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PowerUp : MonoBehaviour
+public class Eatable : MonoBehaviour
 {
-    [SerializeField] bool isHealthy = true;
+    [SerializeField] bool isBuff = false;
+    [SerializeField] bool isFood = false;
     [SerializeField] float timeToStay = 3;
     [SerializeField] float foodVelocity = 10;
     [SerializeField] float maxYMovement = 5;
@@ -68,15 +69,23 @@ public class PowerUp : MonoBehaviour
     void PickUp(Collider player)
     {
         PlayerStats stats = player.GetComponent<PlayerStats>();
-        if(isHealthy)
+        if (isBuff && !isFood)
         {
             stats.energy += player.GetComponent<PlayerStats>().energyGainedFromFood;
-            Score.instance.AddPoint();
+            Score.instance.pointsMultiplier(1.2f);
+            player.GetComponent<Movement>().changeSpeed(1.2f);
+            //Score.instance.AddPoint();
+        }
+        else if (!isBuff && !isFood)
+        {
+            stats.energy -= player.GetComponent<PlayerStats>().energyGainedFromFood;
+            Score.instance.setMultiplier(1.0f);
+            player.GetComponent<Movement>().restoreDefaultSpeed();
         }
         else
         {
-            stats.energy -= player.GetComponent<PlayerStats>().energyGainedFromFood;
-            Score.instance.SubtractPoint();
+            stats.energy += player.GetComponent<PlayerStats>().energyGainedFromFood;
+            Score.instance.AddPoint();
         }
 
         Destroy(gameObject);

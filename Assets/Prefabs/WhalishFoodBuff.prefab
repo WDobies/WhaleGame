@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8365698056681144183}
   - component: {fileID: 8365698056681144180}
   - component: {fileID: 8365698056681144181}
-  - component: {fileID: 8365698056681144178}
+  - component: {fileID: 6637145630146495204}
   m_Layer: 0
-  m_Name: OceanJunk
+  m_Name: WhalishFoodBuff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.45
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8365698056681144178
+--- !u!114 &6637145630146495204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,14 +106,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8365698056681144179}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e944c2dbc3da6154c9d54e3805c28b29, type: 3}
+  m_Script: {fileID: 11500000, guid: e76254ea1ac4b324eb165b17645c4b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHealthy: 0
-  timeToStay: 60
-  foodVelocity: 20
-  maxYMovement: 20
-  upAndDownTime: 4
+  isBuff: 1
+  isFood: 0
+  timeToStay: 20
+  foodVelocity: 50
+  maxYMovement: 5
+  upAndDownTime: 10
   isMovingUpAndDown: 1
 --- !u!1 &8365698057743806104
 GameObject:

@@ -61,7 +61,7 @@ Material:
     - _IntersectionFoamMovement: {r: 0, g: 0, b: 0, a: 0}
     - _IntersectionFoamSampling: {r: 1, g: 0, b: 0, a: 0}
     - _NormalsMovement: {r: 0.04, g: 0.12, b: 0, a: 0}
-    - _ShoreColor: {r: 0, g: 0.98039216, b: 0.30178156, a: 0}
+    - _ShoreColor: {r: 0, g: 0.98039216, b: 0.3017782, a: 0}
     - _SurfaceFoamColor1: {r: 1, g: 1, b: 1, a: 0.3215686}
     - _SurfaceFoamColor2: {r: 1, g: 1, b: 1, a: 0.7294118}
     - _SurfaceFoamMovement: {r: 0.7, g: 0, b: 0.484, a: 0.03}

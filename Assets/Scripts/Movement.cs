@@ -99,6 +99,17 @@ public class Movement : MonoBehaviour
             transform.forward += -rb.velocity.normalized * 0.2f;
     }
 
+    public void changeSpeed(float mult)
+    {
+        upDownForce *= mult;
+        sideForce *= mult;
+    }
+
+    public void restoreDefaultSpeed()
+    {
+        upDownForce = 400;
+        sideForce = 300;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

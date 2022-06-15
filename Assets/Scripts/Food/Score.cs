@@ -7,10 +7,11 @@ public class Score : MonoBehaviour
 {
     public static Score instance;
 
-    [SerializeField] int pointsPerFood = 100;
+    [SerializeField] float pointsPerFood = 100;
+    [SerializeField] float pointsMult = 1.0f;
     [SerializeField] Text scoreText = null;
     [SerializeField] Text highscoreText = null;
-    public int score = 0;
+    public float score = 0;
     public int highscore = 0;
 
     private void Awake()
@@ -27,18 +28,19 @@ public class Score : MonoBehaviour
 
     public void AddPoint()
     {
-        score += pointsPerFood;
+        score += pointsPerFood * pointsMult;
         scoreText.text = "Score: " + score.ToString();
         if (highscore < score)
-            PlayerPrefs.SetInt("highscore", score);
+            PlayerPrefs.SetInt("highscore", (int)score);
     }
 
-    public void SubtractPoint()
+    public void pointsMultiplier(float mult)
     {
-        if(score >= pointsPerFood)
-        {
-            score -= pointsPerFood;
-            scoreText.text = "Score: " + score.ToString();
-        }
+        pointsMult *= mult;
+    }
+
+    public void setMultiplier(float mult)
+    {
+        pointsMult = mult;
     }
 }

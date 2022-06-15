@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3863246001633358481}
   - component: {fileID: 3863246001633358480}
   - component: {fileID: 3863246001633358483}
-  - component: {fileID: 3863246001633358487}
+  - component: {fileID: 7105069982182454969}
   m_Layer: 0
   m_Name: WhalishFood
   m_TagString: Untagged
@@ -97,7 +97,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.45
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3863246001633358487
+--- !u!114 &7105069982182454969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,14 +106,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3863246001633358482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e944c2dbc3da6154c9d54e3805c28b29, type: 3}
+  m_Script: {fileID: 11500000, guid: e76254ea1ac4b324eb165b17645c4b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHealthy: 1
-  timeToStay: 60
-  foodVelocity: 30
-  maxYMovement: 10
-  upAndDownTime: 3
+  isBuff: 0
+  isFood: 1
+  timeToStay: 10
+  foodVelocity: 50
+  maxYMovement: 5
+  upAndDownTime: 10
   isMovingUpAndDown: 0
 --- !u!1001 &1402687670799934289
 PrefabInstance:

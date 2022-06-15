@@ -471,7 +471,12 @@ MonoBehaviour:
   - {fileID: 254128729}
   - {fileID: 2141838609}
   randXYPosRange: 20
-  whalishFood: {fileID: 3863246001633358482, guid: 519c03a12ab7efa47bcad96967f3f2fc, type: 3}
+  whalishFood:
+  - {fileID: 3863246001633358482, guid: 519c03a12ab7efa47bcad96967f3f2fc, type: 3}
+  - {fileID: 8365698056681144179, guid: 7da451393ab7d274c947449fc03a1fa7, type: 3}
+  - {fileID: 8365698056681144179, guid: d33a8eec3acf364489a6beb36f87e6c6, type: 3}
+  foodsToSpawnBuff: 3
+  foodsToSpawnDebuff: 300
   minTimeBetweenSpawns: 1
   maxTimeBetweenSpawns: 3
 --- !u!4 &292022875
@@ -502,6 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsPerFood: 100
+  pointsMult: 1
   scoreText: {fileID: 1540945347}
   highscoreText: {fileID: 230019161}
   score: 0
@@ -2019,7 +2025,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 64900.152, z: 4.5904e-41, w: 0.0087157935}
+  m_BoundingSphereOverride: {x: 2.295887e-39, y: 9.1835e-41, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

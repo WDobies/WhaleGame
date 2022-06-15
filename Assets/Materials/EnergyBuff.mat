@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: EnergyDebuff
+  m_Name: EnergyBuff
   m_Shader: {fileID: 4800000, guid: 8d2bb70cbf9db8d4da26e15b26e74248, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -105,9 +105,9 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.84575903, b: 0, a: 1}
+    - _BaseColor: {r: 0.764151, g: 0, b: 0, a: 1}
     - _Color: {r: 0, g: 0.5566038, b: 0.19093922, a: 1}
-    - _EmissionColor: {r: 1, g: 0.71141213, b: 0, a: 1}
+    - _EmissionColor: {r: 27.359446, g: 19.481071, b: 0, a: 1}
     - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
   m_BuildTextureStacks: []
 --- !u!114 &6980330810360944425
