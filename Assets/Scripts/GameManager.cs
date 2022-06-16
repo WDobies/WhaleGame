@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float difficultyMultiplierModifier = 0.01f;
     [SerializeField] public float difficultyThreshold = 7.0f;
 
+    public GameObject pauseMenu;
+    public GameObject resumeButton;
+
     private void Awake()
     {
         instance = this;
@@ -74,9 +77,23 @@ public class GameManager : MonoBehaviour
         OnGameStateChanged?.Invoke(newState);
     }
 
-    private void HandleLose()
+    public void HandleLose()
     {
-        SceneManager.LoadScene("SampleScene");
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+        resumeButton.SetActive(true);
+    }
+    public void Resume()
+    {
+        Time.timeScale = 1;
+        resumeButton.SetActive(false);
+        pauseMenu.SetActive(false);
     }
 }
 
