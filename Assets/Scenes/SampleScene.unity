@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2810864, g: 0.3664191, b: 0.4987914, a: 1}
+  m_IndirectSpecularColor: {r: 0.28108627, g: 0.36641884, b: 0.49879083, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9487,13 +9487,13 @@ MonoBehaviour:
   whale: {fileID: 1472644061}
   difficultyMultiplierBase: 1
   timer: 0
-  maxHunterNumber: 3
+  maxHunterNumber: 6
   hunterSpawnFrequency: 15
-  hunterDetectionDistance: 30
+  hunterDetectionDistance: 15
   firstHunterSpawn: 3
-  throwingFrequency: 7
-  harpoonSpeed: 80
-  harpoonRange: 30
+  throwingFrequency: 6
+  harpoonSpeed: 110
+  harpoonRange: 24
   difficultyMultiplierModifier: 0.00001
   difficultyThreshold: 10
   pauseMenu: {fileID: 688001926}
