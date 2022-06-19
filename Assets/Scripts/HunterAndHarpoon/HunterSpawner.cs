@@ -23,7 +23,7 @@ public class HunterSpawner : MonoBehaviour
 
     private void Awake()
     {
-        //maxHunterNumber = GameManager.instance.maxHunterNumber;
+        maxHunterNumber = GameManager.instance.maxHunterNumber;
         hunterSpawnFrequency = GameManager.instance.hunterSpawnFrequency;
         firstHunterSpawn = GameManager.instance.firstHunterSpawn;
     }
