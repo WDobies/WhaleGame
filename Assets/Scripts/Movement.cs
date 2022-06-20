@@ -8,9 +8,10 @@ public class Movement : MonoBehaviour
     public float airGravity;
     public float waterGravity;
 
-    [SerializeField] private float sideForce; //300
+    [SerializeField] private float sideForce; // -300
     [SerializeField] private float upDownForce; //400
-    [SerializeField] private float maxSpeed;
+    [SerializeField] public float maxSpeed;
+    private float defaultMaxSpeed;
     [SerializeField] private float closeToMaxVelocityForceDivider = 10;
     [SerializeField] private float oceanEdge; //36
     [SerializeField] Camera mainCamera;
@@ -19,15 +20,29 @@ public class Movement : MonoBehaviour
     private bool isColiding = false;
     private Rigidbody rb;
 
+    [SerializeField] public float debuffTime = 2.0f;
+    [SerializeField] public float currentDebuffTime = 0.0f;
+    [SerializeField] public bool isDebuffed = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = Vector3.zero; //helps avoid moving on Z axis
         width = Screen.width / 2;
         height = Screen.height / 2;
+
+        defaultMaxSpeed = maxSpeed;
     }
     void Update()
     {
+        if (isDebuffed)
+        {
+            currentDebuffTime += Time.deltaTime;
+            if (currentDebuffTime > debuffTime)
+            {
+                restoreDefaultMaxSpeed();
+            }
+        }
         //Physics.gravity = new Vector3(0, -4.5f-(timesHit*4), 0);
         Physics.gravity = new Vector3(0, gravity, 0);
 
@@ -65,7 +80,7 @@ public class Movement : MonoBehaviour
 
                 else if (speed >= maxSpeed)
                 {
-                    Debug.Log("You have reached top speed: " + maxSpeed + "Present speed: " + speed);
+                    //Debug.Log("You have reached top speed: " + maxSpeed + "Present speed: " + speed);
                     if (touch.position.x > width && touch.phase == TouchPhase.Began && touch.position.y > height)
                     {
                         rb.AddForce(-sideForce / closeToMaxVelocityForceDivider, upDownForce / closeToMaxVelocityForceDivider, 0);
@@ -105,11 +120,19 @@ public class Movement : MonoBehaviour
         sideForce *= mult;
     }
 
-    public void restoreDefaultSpeed()
+    public void restoreDefaultMaxSpeed()
     {
-        upDownForce = 400;
-        sideForce = 300;
+        maxSpeed = defaultMaxSpeed;
+        currentDebuffTime = 0.0f;
+        isDebuffed = false;
+        Debug.Log("maxSpeed: " + maxSpeed);
     }
+
+    public void changeMaxSpeed(float maxSpeedMultiplier)
+    {
+        maxSpeed *= maxSpeedMultiplier;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28108627, g: 0.36641884, b: 0.49879083, a: 1}
+  m_IndirectSpecularColor: {r: 0.2810864, g: 0.3664191, b: 0.4987914, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1678,8 +1678,8 @@ MonoBehaviour:
   - {fileID: 3863246001633358482, guid: 519c03a12ab7efa47bcad96967f3f2fc, type: 3}
   - {fileID: 8365698056681144179, guid: 7da451393ab7d274c947449fc03a1fa7, type: 3}
   - {fileID: 8365698056681144179, guid: d33a8eec3acf364489a6beb36f87e6c6, type: 3}
-  foodsToSpawnBuff: 3
-  foodsToSpawnDebuff: 300
+  foodsToSpawnBuff: 30
+  foodsToSpawnDebuff: 4
   minTimeBetweenSpawns: 1
   maxTimeBetweenSpawns: 3
 --- !u!4 &292022875
@@ -6558,6 +6558,9 @@ MonoBehaviour:
   closeToMaxVelocityForceDivider: 10
   oceanEdge: 33
   mainCamera: {fileID: 1687258584}
+  debuffTime: 3
+  currentDebuffTime: 0
+  isDebuffed: 0
 --- !u!54 &1472644066
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6586,11 +6589,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2a12fab94fedb42a559a3313cfccb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startHealth: 0
   health: 60
   energy: 100
   damagePerHarpoon: 20
   energyGainedFromFood: 30
   energyLostPerTouch: 5
+  harpoonsAttached: []
   hp1: {fileID: 599269774}
   hp2: {fileID: 289632066}
   hp3: {fileID: 1054033851}
@@ -6819,7 +6824,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -40.05, y: -75}
+  m_AnchoredPosition: {x: -40.05005, y: -75}
   m_SizeDelta: {x: 200.41, y: 30}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &1540945346

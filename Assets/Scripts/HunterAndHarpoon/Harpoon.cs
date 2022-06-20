@@ -100,6 +100,7 @@ public class Harpoon : MonoBehaviour
         }
         if (other.gameObject.name == "Whale" && !stop && canUpdate)
         {
+            other.gameObject.GetComponent<PlayerStats>().harpoonsAttached.Add(gameObject);
             whale = other.gameObject.GetComponent<Movement>();
 
             PlayerStats stats = other.gameObject.GetComponent<PlayerStats>();
@@ -113,9 +114,9 @@ public class Harpoon : MonoBehaviour
                 Debug.Log("Whale died.");
             }
 
-            this.transform.parent = other.transform;
+            transform.parent = other.transform;
 
-            this.transform.GetComponent<Rigidbody>().detectCollisions = false;
+            transform.GetComponent<Rigidbody>().detectCollisions = false;
             stop = true;
 
             // Particles
@@ -126,7 +127,6 @@ public class Harpoon : MonoBehaviour
                 Blood.Play();
 
             isMovementFinished = true;
-            //healthBar.SetSliderValue(stats.health);
         }
     }
 

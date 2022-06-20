@@ -8,6 +8,8 @@ public class Eatable : MonoBehaviour
     [SerializeField] bool isBuff = false;
     [SerializeField] bool isFood = false;
     [SerializeField] float timeToStay = 3;
+    [SerializeField] float debuffSpeedMultiplier = 0.6f;
+
     [SerializeField] float foodVelocity = 10;
     [SerializeField] float maxYMovement = 5;
     [SerializeField] int upAndDownTime = 10;
@@ -71,16 +73,28 @@ public class Eatable : MonoBehaviour
         PlayerStats stats = player.GetComponent<PlayerStats>();
         if (isBuff && !isFood)
         {
-            stats.energy += player.GetComponent<PlayerStats>().energyGainedFromFood;
-            Score.instance.pointsMultiplier(1.2f);
-            player.GetComponent<Movement>().changeSpeed(1.2f);
-            //Score.instance.AddPoint();
+            if (player.GetComponent<PlayerStats>().health < player.GetComponent<PlayerStats>().startHealth)
+            {
+                player.GetComponent<PlayerStats>().health += player.GetComponent<PlayerStats>().startHealth / 3.0f;
+                if (player.GetComponent<PlayerStats>().health >= player.GetComponent<PlayerStats>().startHealth / 2.0f)
+                {
+                    player.GetComponent<PlayerStats>().hp2.SetActive(true);
+                }
+                if (player.GetComponent<PlayerStats>().health >= player.GetComponent<PlayerStats>().startHealth)
+                {
+                    player.GetComponent<PlayerStats>().hp1.SetActive(true);
+                }
+            }
+
+            //player.GetComponent<PlayerStats>().harpoonsAttached.RemoveAt(player.GetComponent<PlayerStats>().harpoonsAttached.Count - 1);
+            //Destroy(player.GetComponent<PlayerStats>().harpoonsAttached[player.GetComponent<PlayerStats>().harpoonsAttached.Count - 1].gameObject);
         }
         else if (!isBuff && !isFood)
         {
-            stats.energy -= player.GetComponent<PlayerStats>().energyGainedFromFood;
-            Score.instance.setMultiplier(1.0f);
-            player.GetComponent<Movement>().restoreDefaultSpeed();
+            player.GetComponent<Movement>().currentDebuffTime = 0.0f;
+            player.GetComponent<Movement>().isDebuffed = true;
+            player.GetComponent<Movement>().changeMaxSpeed(debuffSpeedMultiplier);
+            Debug.Log("maxSpeed: " + player.GetComponent<Movement>().maxSpeed);
         }
         else
         {

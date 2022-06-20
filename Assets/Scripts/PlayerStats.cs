@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    private float startHealth;
+    public float startHealth;
     [SerializeField] public float health = 60;
     [SerializeField] public float energy = 100f;
     [SerializeField] public float damagePerHarpoon = 20f;
     [SerializeField] public float energyGainedFromFood = 30f;
     [SerializeField] public float energyLostPerTouch = 5f;
+
+    [SerializeField] public List<GameObject> harpoonsAttached = new List<GameObject>();
 
     public GameObject hp1;
     public GameObject hp2;
@@ -24,6 +26,7 @@ public class PlayerStats : MonoBehaviour
 
     public void Update()
     {
+        Debug.Log(health);
         if(health <= 0)
         {
             GameManager.instance.UpdateGameState(GameState.Lose);
