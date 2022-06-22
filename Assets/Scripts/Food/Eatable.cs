@@ -71,24 +71,31 @@ public class Eatable : MonoBehaviour
 
     void PickUp(Collider player)
     {
-        
         PlayerStats stats = player.GetComponent<PlayerStats>();
         if (isBuff && !isFood)
         {
             AudioManager.instance.Bonus();
+            // check if whale got hit
             if (player.GetComponent<PlayerStats>().health < player.GetComponent<PlayerStats>().startHealth)
             {
-                player.GetComponent<PlayerStats>().health += player.GetComponent<PlayerStats>().startHealth / 3.0f;
-                if (player.GetComponent<PlayerStats>().health >= player.GetComponent<PlayerStats>().startHealth / 2.0f)
+                // If hp = 20
+                if (player.GetComponent<PlayerStats>().health == 20)
                 {
                     player.GetComponent<PlayerStats>().hp2.SetActive(true);
+                    Destroy(player.gameObject.transform.GetChild(3).gameObject);
                 }
-                if (player.GetComponent<PlayerStats>().health >= player.GetComponent<PlayerStats>().startHealth)
+
+                // If hp = 40
+                if (player.GetComponent<PlayerStats>().health == 40)
                 {
                     player.GetComponent<PlayerStats>().hp1.SetActive(true);
+                    Destroy(player.gameObject.transform.GetChild(2).gameObject);
                 }
-            }
 
+                // Add 20hp
+                player.GetComponent<PlayerStats>().health += player.GetComponent<PlayerStats>().startHealth / 3.0f;
+
+            }
             //player.GetComponent<PlayerStats>().harpoonsAttached.RemoveAt(player.GetComponent<PlayerStats>().harpoonsAttached.Count - 1);
             //Destroy(player.GetComponent<PlayerStats>().harpoonsAttached[player.GetComponent<PlayerStats>().harpoonsAttached.Count - 1].gameObject);
         }
