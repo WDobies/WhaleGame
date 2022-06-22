@@ -31,7 +31,7 @@ public class Hunter : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         throwingFrequency = GameManager.instance.throwingFrequency / GameManager.instance.difficultyMultiplierBase;
 

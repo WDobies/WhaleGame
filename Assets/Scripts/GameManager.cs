@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        //Time.timeScale = 1;
         instance = this;
         //GameManager.OnGameStateChanged += GameManagerOnOnGameStateChanged;
 
@@ -45,11 +46,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         UpdateGameState(GameState.GameLoop);
-
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         timer += Time.deltaTime;
 
@@ -94,6 +94,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         resumeButton.SetActive(false);
         pauseMenu.SetActive(false);
+    }
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(1);
     }
 }
 

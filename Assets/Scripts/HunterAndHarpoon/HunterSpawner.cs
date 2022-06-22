@@ -35,7 +35,7 @@ public class HunterSpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (spawnedHuntersList.Count == maxHunterNumber)
         {

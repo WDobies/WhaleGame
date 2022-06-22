@@ -3560,7 +3560,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &640400213
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8748,9 +8748,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 688001927}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: LoadGame
+      - m_Target: {fileID: 2143664195}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9539,6 +9539,14 @@ PrefabInstance:
     - target: {fileID: 6419892195713071082, guid: 2aa2455f40b0ff642aa3a3653c064aae, type: 3}
       propertyPath: m_Name
       value: Replay
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419892195713071084, guid: 2aa2455f40b0ff642aa3a3653c064aae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 6419892195713071084, guid: 2aa2455f40b0ff642aa3a3653c064aae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6419892196510637905, guid: 2aa2455f40b0ff642aa3a3653c064aae, type: 3}
       propertyPath: m_Pivot.x

@@ -24,7 +24,7 @@ public class PlayerStats : MonoBehaviour
         startHealth = health;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         Debug.Log(health);
         if(health <= 0)
