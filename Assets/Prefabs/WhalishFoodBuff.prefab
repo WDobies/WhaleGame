@@ -114,7 +114,7 @@ MonoBehaviour:
   isFood: 0
   timeToStay: 20
   debuffSpeedMultiplier: 0.6
-  foodVelocity: 50
+  foodVelocity: 47
   maxYMovement: 5
   upAndDownTime: 10
   isMovingUpAndDown: 1
