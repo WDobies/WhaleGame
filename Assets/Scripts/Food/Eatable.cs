@@ -24,7 +24,12 @@ public class Eatable : MonoBehaviour
     private void Start()
     {
         if (transform.position.x >= GameObject.FindGameObjectWithTag("Player").transform.position.x) leftToRight = false;
-        else leftToRight = true;
+        else
+        {
+            leftToRight = true;
+            transform.Rotate(0, 180, 0);
+        }
+
         spawnerPosOffset = transform.position;
     }
 

@@ -1986,7 +1986,7 @@ MonoBehaviour:
   - {fileID: 3863246001633358482, guid: 519c03a12ab7efa47bcad96967f3f2fc, type: 3}
   - {fileID: 8365698056681144179, guid: 7da451393ab7d274c947449fc03a1fa7, type: 3}
   - {fileID: 8365698056681144179, guid: d33a8eec3acf364489a6beb36f87e6c6, type: 3}
-  foodsToSpawnBuff: 3
+  foodsToSpawnBuff: 30
   foodsToSpawnDebuff: 4
   minTimeBetweenSpawns: 1
   maxTimeBetweenSpawns: 3
