@@ -100,6 +100,7 @@ public class Harpoon : MonoBehaviour
         }
         if (other.gameObject.name == "Whale" && !stop && canUpdate)
         {
+            AudioManager.instance.playHitSound();
             other.gameObject.GetComponent<PlayerStats>().harpoonsAttached.Add(gameObject);
             whale = other.gameObject.GetComponent<Movement>();
 

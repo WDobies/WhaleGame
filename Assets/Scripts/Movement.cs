@@ -105,6 +105,7 @@ public class Movement : MonoBehaviour
         }
         else
         {
+            if(Time.timeScale == 1) { AudioManager.instance.Splash(); }           
             gravity = airGravity;
             mainCamera.GetComponent<CameraFollow>().isUnderwater = false;
         }

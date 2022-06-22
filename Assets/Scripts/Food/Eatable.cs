@@ -14,7 +14,6 @@ public class Eatable : MonoBehaviour
     [SerializeField] float maxYMovement = 5;
     [SerializeField] int upAndDownTime = 10;
     [SerializeField] bool isMovingUpAndDown = true;
-    [SerializeField] AudioSource eatSound;
 
     bool leftToRight;
     bool isMovingUp = true;
@@ -76,6 +75,7 @@ public class Eatable : MonoBehaviour
         PlayerStats stats = player.GetComponent<PlayerStats>();
         if (isBuff && !isFood)
         {
+            AudioManager.instance.Bonus();
             if (player.GetComponent<PlayerStats>().health < player.GetComponent<PlayerStats>().startHealth)
             {
                 player.GetComponent<PlayerStats>().health += player.GetComponent<PlayerStats>().startHealth / 3.0f;
@@ -94,6 +94,7 @@ public class Eatable : MonoBehaviour
         }
         else if (!isBuff && !isFood)
         {
+            AudioManager.instance.Debuff();
             player.GetComponent<Movement>().currentDebuffTime = 0.0f;
             player.GetComponent<Movement>().isDebuffed = true;
             player.GetComponent<Movement>().changeMaxSpeed(debuffSpeedMultiplier);
@@ -101,7 +102,7 @@ public class Eatable : MonoBehaviour
         }
         else
         {
-            eatSound.Play();
+            AudioManager.instance.playFoodSound();
             stats.energy += player.GetComponent<PlayerStats>().energyGainedFromFood;
             Score.instance.AddPoint();
         }

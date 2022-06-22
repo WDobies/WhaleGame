@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Debug.Log(health);
+        //Debug.Log(health);
         if(health <= 0)
         {
             GameManager.instance.UpdateGameState(GameState.Lose);
