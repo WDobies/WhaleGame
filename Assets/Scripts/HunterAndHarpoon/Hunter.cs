@@ -36,9 +36,9 @@ public class Hunter : MonoBehaviour
         throwingFrequency = GameManager.instance.throwingFrequency / GameManager.instance.difficultyMultiplierBase;
 
         whalePos = whale.transform.position;
-        //hunterPos = transform.position;
-        //Debug.Log(Mathf.Abs(hunterPos.x - whalePos.x));
-        if (Time.time > nextActionTime)
+        hunterPos = transform.position;
+        Debug.Log(Mathf.Abs(hunterPos.x - whalePos.x));
+        if (Time.time > nextActionTime && Mathf.Abs(hunterPos.x - whalePos.x) < 45.0f)
         {
             nextActionTime = Time.time + Random.Range(throwingFrequency, throwingFrequency * 2);
             SpawnHarpoon();
