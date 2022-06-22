@@ -37,7 +37,7 @@ public class Hunter : MonoBehaviour
 
         whalePos = whale.transform.position;
         hunterPos = transform.position;
-        Debug.Log(Mathf.Abs(hunterPos.x - whalePos.x));
+        //Debug.Log(Mathf.Abs(hunterPos.x - whalePos.x));
         if (Time.time > nextActionTime && Mathf.Abs(hunterPos.x - whalePos.x) < 45.0f)
         {
             nextActionTime = Time.time + Random.Range(throwingFrequency, throwingFrequency * 2);
