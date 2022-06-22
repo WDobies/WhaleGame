@@ -14,6 +14,8 @@ public class Eatable : MonoBehaviour
     [SerializeField] float maxYMovement = 5;
     [SerializeField] int upAndDownTime = 10;
     [SerializeField] bool isMovingUpAndDown = true;
+    [SerializeField] AudioSource eatSound;
+
     bool leftToRight;
     bool isMovingUp = true;
     private Vector3 spawnerPosOffset;
@@ -70,6 +72,7 @@ public class Eatable : MonoBehaviour
 
     void PickUp(Collider player)
     {
+        
         PlayerStats stats = player.GetComponent<PlayerStats>();
         if (isBuff && !isFood)
         {
@@ -98,6 +101,7 @@ public class Eatable : MonoBehaviour
         }
         else
         {
+            eatSound.Play();
             stats.energy += player.GetComponent<PlayerStats>().energyGainedFromFood;
             Score.instance.AddPoint();
         }

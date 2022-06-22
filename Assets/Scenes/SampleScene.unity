@@ -341,7 +341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eab4f5cf4ff0a2a419147171a716df2a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eab4f5cf4ff0a2a419147171a716df2a, type: 3}
       propertyPath: m_LocalScale.x
@@ -361,7 +361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eab4f5cf4ff0a2a419147171a716df2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 191
+      value: 205.8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eab4f5cf4ff0a2a419147171a716df2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7127,6 +7127,7 @@ GameObject:
   - component: {fileID: 1687258584}
   - component: {fileID: 1687258586}
   - component: {fileID: 1687258582}
+  - component: {fileID: 1687258583}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7150,6 +7151,14 @@ MonoBehaviour:
   target: {fileID: 1472644064}
   speed: 0.05
   offset: {x: 0, y: 2, z: -60}
+--- !u!81 &1687258583
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 1
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -7947,7 +7956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eab4f5cf4ff0a2a419147171a716df2a, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eab4f5cf4ff0a2a419147171a716df2a, type: 3}
       propertyPath: m_LocalScale.x
@@ -7963,7 +7972,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eab4f5cf4ff0a2a419147171a716df2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 155.35275
+      value: 191.7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: eab4f5cf4ff0a2a419147171a716df2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9409,7 +9418,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 6.84e-43, y: -0.000000009216997, z: 6.84e-43, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -9493,11 +9502,11 @@ MonoBehaviour:
   difficultyMultiplierBase: 1
   timer: 0
   maxHunterNumber: 9
-  hunterSpawnFrequency: 15
-  hunterDetectionDistance: 15
-  firstHunterSpawn: 3
-  throwingFrequency: 6
-  harpoonSpeed: 86
+  hunterSpawnFrequency: 8
+  hunterDetectionDistance: 35
+  firstHunterSpawn: 2
+  throwingFrequency: 3
+  harpoonSpeed: 140
   harpoonRange: 24
   difficultyMultiplierModifier: 0.00001
   difficultyThreshold: 10
